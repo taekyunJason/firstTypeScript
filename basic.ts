@@ -50,3 +50,8 @@ if (typeof abc === "number") {
 if (typeof abc === "string") {
   let c = abc.toUpperCase();
 }
+
+//아무것도 return 하지 않는 함수
+function hello() {
+  console.log("x");
+}
