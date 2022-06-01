@@ -103,10 +103,13 @@ add2(1, 2, 3);
 type SuperPrint = {
   //제네릭 타입 - 타입들의 placeholder (어떤 형태의 데이터를 받을지 모를때 사용할 수 있음)
   //call signature 앞에 <> 제네릭 변수명을 넣고 타입에 제네릭 변수명을 선언하면 사용할수 있음!
-  <GenericType>(arr: GenericType[]): GenericType;
+  //우리의 요청에 따라 csll signature을 생성한다는 의미!
+
+  //추가적인 제네릭타입을 설정해서 여러개의 파라미터를 받을 수 있음
+  <GenericType, V>(arr: GenericType[], b: V): GenericType;
 };
 
 const superPrint: SuperPrint = (arr) => arr[0];
 
-superPrint([1, 2, 3]);
-superPrint([true, false, true]);
+const e = superPrint([1, 2, 3], "a");
+const f = superPrint([true, false, true], 1);
