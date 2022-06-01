@@ -97,3 +97,16 @@ const add2: Add2 = (a, b, c?: number) => {
 
 add2(1, 2);
 add2(1, 2, 3);
+
+//Polymorphism
+
+type SuperPrint = {
+  //제네릭 타입 - 타입들의 placeholder (어떤 형태의 데이터를 받을지 모를때 사용할 수 있음)
+  //call signature 앞에 <> 제네릭 변수명을 넣고 타입에 제네릭 변수명을 선언하면 사용할수 있음!
+  <GenericType>(arr: GenericType[]): GenericType;
+};
+
+const superPrint: SuperPrint = (arr) => arr[0];
+
+superPrint([1, 2, 3]);
+superPrint([true, false, true]);
