@@ -1,0 +1,27 @@
+name: CI-CD
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_IP }}
+          username: ${{ secrets.REMOTE_SSH_ID }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          port: ${{ secrets.REMOTE_SSH_PORT }}
+          script: |
+            cd /home/ubuntu/firstTypeScript
+            # git config --global --add safe.directory /home/ubuntu/firstTypeScript
+            sudo git pull
+            # sudo npm update
+            sudo npm install
+            sudo pm2 reload all
