@@ -55,3 +55,14 @@ if (typeof abc === "string") {
 function hello() {
   console.log("x");
 }
+
+//never은 함수가 절대 return 하지 않을때 발생함
+function helloworld(name: string | number) {
+  if (typeof name === "string") {
+    name; //string type
+  } else if (typeof name === "number") {
+    name; //number type
+  } else {
+    name; //never type
+  }
+}
