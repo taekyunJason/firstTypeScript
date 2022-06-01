@@ -73,3 +73,27 @@ function helloworld(name: string | number) {
 type Add = (a: number, b: number) => number;
 //이 경우에 인자의 타입을 지정할 필요가 없음! 위에서 타입을 지정해주었기 때문!
 const add: Add = (a, b) => a + b;
+
+//OverLoading = 여러개의  call signatures 가 있는 함수
+type Add1 = {
+  (a: number, b: number): number;
+  (a: number, b: string): number;
+};
+
+const add1: Add = (a, b) => {
+  if (typeof b === "string") return a;
+  return a + b;
+};
+
+type Add2 = {
+  (a: number, b: number): number;
+  (a: number, b: number, c: number): number;
+};
+
+const add2: Add2 = (a, b, c?: number) => {
+  if (c) return a + b + c;
+  return a + b;
+};
+
+add2(1, 2);
+add2(1, 2, 3);
