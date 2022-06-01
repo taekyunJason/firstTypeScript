@@ -37,5 +37,16 @@ const player: readonly [string, number, boolean] = ["jason", 1, true];
 //되도록이면 사용하지 않는 것이 좋음!!!
 const a: any[] = [1, 2, 3, 4];
 const b: any = true;
-
 a + b;
+
+//변수가 어떤 타입인지 모를때 사용하는 타입!
+let abc: unknown;
+
+//a가 number 타입일때만 아래의 코드를 실행하게하면 에러가 발생하지 않음
+if (typeof abc === "number") {
+  //해당 코드만 단독으로 사용하면 에러발생 => a가 unknown 타입으로 설정되어있기 때문!
+  let b = abc + 1;
+}
+if (typeof abc === "string") {
+  let c = abc.toUpperCase();
+}
