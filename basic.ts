@@ -66,3 +66,10 @@ function helloworld(name: string | number) {
     name; //never type
   }
 }
+
+//Call Signatures
+//함수를 어떻게 호출해야하는지 보여주는 것. 함수의 반환타입도 보여줌. 마우스 올렸을때 보여지는 것!
+
+type Add = (a: number, b: number) => number;
+//이 경우에 인자의 타입을 지정할 필요가 없음! 위에서 타입을 지정해주었기 때문!
+const add: Add = (a, b) => a + b;
