@@ -125,3 +125,42 @@ const sam: Player1<{ favFood: string }> = {
     favFood: "pizza",
   },
 };
+
+//추상클래스 - 다른 클래스가 상속받을 수 있는 클래스
+//하지만 해당 클래스에서는 직접 새로운 인스턴스를 만들수 없음!
+//오직 다른 곳에서 상속만 받을수 있는 클래스!
+abstract class User {
+  constructor(
+    //private 일때는 인스턴스 밖에서 접근할 수 없고, 부모클래스를 상속받는 다른 자식 클래스에서도 접근할 수 없음
+    //인스턴스나 메서드에서 접근이 가능하지만, 추상클래스여서 인스턴스화 할 수 없음
+
+    //protected 일때는 클래스 밖에서 여기에 접근할 수 없음
+    protected firstName: string,
+    protected lastName: string,
+    protected nickName: string
+  ) {}
+  //추상 메서드는 추상 클래스를 상속받는 모든 것들이 구현해야하는 메서드
+  abstract getNickName(): void;
+  //메서드는 클래스 안에 존재하는 함수
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+//추상클래스를 상속받았기 때문에 그 안에 있는 추상 메서드를 구현해야 에러가 없음!
+class Player2 extends User {
+  getNickName() {
+    //추상클래스를 상속하면 그 안에 있는 protected 프로퍼티는 사용이 가능함!
+    console.log(this.nickName);
+  }
+}
+
+const jason1 = new Player2("jason", "kim", "pizzaboy");
+
+//modifier를 private로 설정하면 외부에서 접근이 불가능함.
+//이는 변수/ 함수 모두 적용 가능함!
+//Property 'firstName' is private and only accessible within class 'Player2'.
+//jason1.firstName;
+jason1.nickName;
+
+jason1.getFullName();
