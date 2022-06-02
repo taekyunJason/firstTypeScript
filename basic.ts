@@ -113,3 +113,15 @@ const superPrint: SuperPrint = (arr) => arr[0];
 
 const e = superPrint([1, 2, 3], "a");
 const f = superPrint([true, false, true], 1);
+
+type Player1<E> = {
+  name: string;
+  extraInfo: E; //extraInfo에 어떤 값이 올지 모르는 경우(object, boolean등 여러가지 값이 올수 있는 경우)에 타입 이름 옆에 제네릭을 선언해줘서 해당 변수에 사용 가능!
+};
+
+const sam: Player1<{ favFood: string }> = {
+  name: "sam",
+  extraInfo: {
+    favFood: "pizza",
+  },
+};
