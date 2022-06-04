@@ -280,6 +280,5 @@ interface User1 {
 //   constructor() {
 //     private firstName: string
 //   private lastName: string
-
 //   }
 // }
