@@ -13,7 +13,9 @@ https://typescript-kr.github.io/pages/basic-types.html
 
 
 타입스크립트 특징
-
 typeChecker 가 존재해서 에러를 잡아줌 -> 타입스크립트가 타입을 추론하게 하는 것이 좋음
 
 옵셔널타입 ? 으로 선택적으로 값을 줄수 있음
+
+개발자가 실수하는 것을 방지해줌
+
