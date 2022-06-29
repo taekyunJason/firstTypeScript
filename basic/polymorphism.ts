@@ -19,22 +19,27 @@
 // Generics
 // https://www.typescriptlang.org/docs/handbook/2/generics.html#handbook-content
 
-type SuperPrint = {
-  <T, G>(arr: T[], b: G): T;
-  //  ^^이렇게 작성하고 타입에 선언한 형태를 적어줌 -> 제네릭 사용방법!
-};
+// type SuperPrint = {
+//   <T, G>(arr: T[], b: G): T;
+//   //  ^^이렇게 작성하고 타입에 선언한 형태를 적어줌 -> 제네릭 사용방법!
+// };
 
-const superPrint: SuperPrint = (arr) => arr[0];
+// const superPrint: SuperPrint = (arr) => arr[0];
+
+function superPrint<V, G>(a: V[], b: G) {
+  return a[0];
+}
 
 //위에서 설정한 call signature 에 해당하는 형태만 허용됨
+//직접 타입을 설정할 수도 있지만, 추론하도록 하는 것이 좋음
 const a = superPrint([1, 2, 3, 4], "x");
 const b = superPrint([true, false, true], 1);
 const c = superPrint(["a", "b", "c"], true);
 const d = superPrint(["abc", true, 1], [1]);
 
-if (typeof d === "string") {
-  d.toUpperCase();
-}
+// if (typeof d === "string") {
+//   d.toUpperCase();
+// }
 
 //generic을 사용하는 이유 - call signature를 작성할때, 들어올 확실한 타입을 모를 때 사용
 //타입의 placeholder같은 개념 => 실제로 들어오는 입력값에 따라 타입이 정해짐!
@@ -64,3 +69,30 @@ if (typeof d === "string") {
 // // 두 번째 방법은 type argument inference(타입 인수 유추)를 사용합니다. 즉, 컴파일러가 전달하는 인수 유형에 따라 자동으로 Type 값을 설정하기를 원합니다.
 // ```
 // https://www.typescriptlang.org/docs/handbook/2/generics.html
+
+//아래처럼 커스텀 및 확장 가능
+type Player<E> = {
+  name: string;
+  extraInfo: E;
+};
+
+type JasonExtra = {
+  favFood: string;
+};
+
+type JasonData = Player<JasonExtra>;
+
+const jason: JasonData = {
+  name: "jason",
+  extraInfo: {
+    favFood: "pizza",
+  },
+};
+
+const serena: Player<null> = {
+  name: "serena",
+  extraInfo: null,
+};
+
+type A = Array<number>;
+let arr: A = [1, 2, 3, 4];
