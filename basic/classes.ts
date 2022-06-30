@@ -87,7 +87,7 @@ class Dic {
   }
 }
 class Word {
-  constructor(public term: string, public def: string) {}
+  constructor(public readonly term: string, public readonly def: string) {}
 }
 
 const pizza = new Word("pizza", "이탈리아 음식");
