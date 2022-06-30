@@ -67,9 +67,32 @@ jason.getFullName();
 // protected 　　 　⭕　　　　　　     　⭕　　　　       　❌
 // public　　　  　　⭕　　　　　　　     ⭕　　　　       　⭕
 
-// type Words = {
-//   [key: string]: string;
-// }
-// class Dic {
-//   private words:
-// }
+type Words = {
+  [key: string]: string;
+};
+
+class Dic {
+  private words: Words;
+  constructor() {
+    this.words = {};
+  }
+  add(word: Word) {
+    //특정 단어가 등록되어 있지 않은 경우
+    if (this.words[word.term] === undefined) {
+      this.words[word.term] = word.def;
+    }
+  }
+  def(term: string) {
+    return this.words[term];
+  }
+}
+class Word {
+  constructor(public term: string, public def: string) {}
+}
+
+const pizza = new Word("pizza", "이탈리아 음식");
+
+const dic = new Dic();
+
+dic.add(pizza);
+dic.def("pizza");
