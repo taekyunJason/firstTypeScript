@@ -66,3 +66,10 @@ jason.getFullName();
 // private 　 　 　　⭕　　　　     　　　❌　　       　　　❌
 // protected 　　 　⭕　　　　　　     　⭕　　　　       　❌
 // public　　　  　　⭕　　　　　　　     ⭕　　　　       　⭕
+
+// type Words = {
+//   [key: string]: string;
+// }
+// class Dic {
+//   private words:
+// }
